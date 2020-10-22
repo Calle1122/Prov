@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Prov
 {
@@ -11,6 +12,8 @@ namespace Prov
         private int actualValue;
         private bool cursed;
         private Random generator = new Random();
+        private List<string> items = new List<string>() {"Dark Book", "Ancient Map", "Shiny Relic", "Old Ritual Texts"};
+        private List<string> categories = new List<string>() {"Very Old Item", "Gold Dipped Item", "Mythical Item", "Forgotten Item"};
 
         public Book(){
             actualValue = generator.Next();
@@ -25,6 +28,12 @@ namespace Prov
             else if(cursedInt == 2){
                 cursed = true;
             }
+
+            int generatedName = generator.Next(0, items.Count);
+            int generatedCategory = generator.Next(0, categories.Count);
+
+            name = items[generatedName];
+            category = categories[generatedCategory];
 
         }
 
