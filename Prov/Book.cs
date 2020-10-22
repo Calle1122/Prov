@@ -38,23 +38,63 @@ namespace Prov
         }
 
         public void PrintInfo(){
-
+            Console.WriteLine("Item Name: " + name);
+            Console.WriteLine("Item Category: " + category);
+            Console.WriteLine("Item Rarity: " + rarity);
+            Console.WriteLine("Item Price: " + price);
         }
 
         public int Evaluate(){
+            int rightPrice;
 
+            rightPrice = actualValue * rarity;
+
+            int percentage = generator.Next(50, 151);
+
+            rightPrice = rightPrice/100;
+            rightPrice = rightPrice * percentage;
+
+            return rightPrice;
         }
 
         public string GetCategory(){
-
+            return category;
         }
 
         public string GetName(){
-
+            return name;
         }
 
         public bool IsCursed(){
+            if(cursed == true){
+                int risk = generator.Next(1,11);
 
+                if(risk <3){
+                    return false;
+                }
+
+                else{
+                    return true;
+                }
+            }
+
+            else if(cursed == false){
+                int risk = generator.Next(1,11);
+
+                if(risk <3){
+                    return true;
+                }
+
+                else{
+                    return false;
+                }
+            }
+
+            // Detta kodblock kommer aldrig att köras.
+            // Var bara tvungen att skriva det så att metoden inte blir arg.
+            else{
+                return true;
+            }
         }
     }
 }
