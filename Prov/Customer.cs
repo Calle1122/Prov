@@ -28,6 +28,20 @@ namespace Prov
 
             //Slumpar ålder mellan 20-95 år.
             age = generator.Next(20, 96);
+
+            //Slumpar money.
+            money = generator.Next();
+
+            //Följande kod i metoden slumpar ifall kunden är greedy eller inte.
+            int isGreedy = generator.Next(1,3);
+
+            if(isGreedy == 1){
+                greedy = false;
+            }
+
+            else if(isGreedy == 2){
+                greedy = true;
+            }
         }
 
         //Tanken med denna metod är att den ska skriva ut kundens namn, ålder och pengar.
