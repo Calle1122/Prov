@@ -5,19 +5,30 @@ namespace Prov
 {
     public class Book
     {
+        //variabel för pris
         public int price;
+        //variabel för namn
         private string name;
+        //variabel för rarity
         private int rarity;
+        //variabel för kategori
         private string category;
+        //variabel för det faktiska värdet
         private int actualValue;
+        //ifall itemet är cursed eller inte
         private bool cursed;
+        //en slumpgenerator
         private Random generator = new Random();
+        //en lista för möjliga namn på items
         private List<string> items = new List<string>() {"Dark Book", "Ancient Map", "Shiny Relic", "Old Ritual Texts"};
+        //en lista för möjliga kategorier på items
         private List<string> categories = new List<string>() {"Very Old Item", "Gold Dipped Item", "Mythical Item", "Forgotten Item"};
 
         public Book(){
-            actualValue = generator.Next();
-            rarity = generator.Next();
+            //Slumpar värde för value mellan 10-10000.
+            actualValue = generator.Next(10, 10001);
+            //Slumpar värde för rarity mellan 1-100.
+            rarity = generator.Next(1, 101);
 
             int cursedInt = generator.Next(1,3);
 
@@ -40,8 +51,8 @@ namespace Prov
         public void PrintInfo(){
             Console.WriteLine("Item Name: " + name);
             Console.WriteLine("Item Category: " + category);
-            Console.WriteLine("Item Rarity: " + rarity);
-            Console.WriteLine("Item Price: " + price);
+            Console.WriteLine("Item Rarity: " + rarity + "% rare");
+            Console.WriteLine("Item Price: " + actualValue + " $");
         }
 
         public int Evaluate(){
